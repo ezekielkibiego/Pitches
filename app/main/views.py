@@ -1,10 +1,9 @@
-from flask import render_template,request,redirect,url_for,abort
+from flask import render_template,request,redirect,url_for,abort, flash
 from . import main
-from ..models import User,Post
+from ..models import Comment, User,Post
 from flask_login import login_required
 from .. import db,photos
-# from .forms import CommentForm, PostForm, UpdateProfile
-from .forms import UpdateProfile, PostForm
+from .forms import UpdateProfile, PostForm, CommentForm
 
 @main.route('/')
 def index():
@@ -44,3 +43,16 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+
+@main.route('/add_comment', methods=['GET', 'POST'])
+@login_required
+def add_comment():
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(name=form.name.data)
+        db.session.add(comment)
+        db.session.commit()
+        flash('Category added successfully.')
+        return redirect(url_for('.index'))
+    return render_template('add_category.html', form=form)

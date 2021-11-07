@@ -26,15 +26,42 @@ class Post(db.Model):
     def _repr_(self):
         return f'Post {self.title}'
 
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.String(255))
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    post_id = db.Column(db.Integer,db.ForeignKey("post.id"))
+    # title = db.Column(db.String(255))
+    
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(cls, post_id):
+        comments = Comment.query.filter_by(post_id=post_id).all()
+        return comments
+
+    @classmethod
+    def get_comment_author(cls, user_id):
+        author = User.query.filter_by(id=user_id).first()
+
+        return author
+
+
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
+
+    post = db.relationship('Post',backref = 'user',lazy = "dynamic")
+
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
-    post = db.relationship('Post',backref = 'user',lazy = "dynamic")
 
     @property
     def password(self):
@@ -48,9 +75,24 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-class Comment(db.Model):
-    __tablename__ = 'comments'
-    id = db.Column(db.Integer, primary_key=True)
-    comment = db.Column(db.String(255))
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-    post_id = db.Column(db.Integer,db.ForeignKey("post.id"))
+
+
+
+# class Category(db.Model):
+#     __tablename__ = 'categories'
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(64), unique=True)
+#     picture_path = db.Column(db.String(64))
+#     post = db.relationship('Post', backref='category', lazy='dynamic')
+
+
+#     @staticmethod
+#     def get_all_categories():
+#         return Category.query.all()
+
+#     def save_category(self):
+#         db.session.add(self)
+#         db.session.commit()
+
+#     def __repr__(self):
+#         return '<Category %r>' % self.name

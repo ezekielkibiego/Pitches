@@ -10,5 +10,29 @@
 
 <div class="container-fluid text-center">
         <h1> Welcome To Pitches Extravaganza</h1>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-12">
+                    <h3 class="card-title">Pitch Category:Pick-up Lines</h3>
+                    <p class="card-text">I wanted to take you to the movies but they don't allow you to bring your own snacks.</p>
+                    <p class="card-text text-muted">Uploaded by Ezekiel Kibiego</p>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h3>Comments</h3>
+            {% if comments %}
+                {{macro.displayComments(comments)}}
+            {%else%}
+                <h4>This pitch has no Comments</h4>
+                <a href="/posts/comment/new/{{posts.id}}"><button>Write a New Comment</button></a>
+
+            {% endif %}
+        </div>
+
 </div>
+
+
 {% endblock%}
