@@ -14,7 +14,7 @@ This  is a Python Flask App where a user(s) can post a one minute pitches and al
 
 ## Screenshots
 
-<img src="" width="900px" height="440px">
+<img src="">
 
 ## User Story
   A user can;
