@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort, flash
 from . import main
 from ..models import Comment, User,Post
-from flask_login import login_required
+from flask_login import login_required, current_user
 from .. import db,photos
 from .forms import UpdateProfile, PostForm, CommentForm
 
@@ -45,7 +45,7 @@ def update_pic(uname):
     return redirect(url_for('main.profile',uname=uname))
 
 
-@main.route('/add_comment', methods=['GET', 'POST'])
+@main.route('/comment', methods=['GET', 'POST'])
 @login_required
 def add_comment():
     form = CommentForm()
@@ -53,6 +53,23 @@ def add_comment():
         comment = Comment(name=form.name.data)
         db.session.add(comment)
         db.session.commit()
-        flash('Category added successfully.')
+        flash('Comment added successfully.')
         return redirect(url_for('.index'))
-    return render_template('add_category.html', form=form)
+    return render_template('comments.html', form=form)
+
+@main.route('/post', methods=['GET', 'POST'])
+@login_required
+def new_post():
+    post_form = PostForm()
+    if post_form.validate_on_submit():
+        title = post_form.post_title.data
+        new_post = Post(title=title, user=current_user)
+        new_post.save_post()
+        db.session.add(new_post)
+        db.session.commit()
+        return redirect(url_for('main.index'))
+
+    else:
+        all_posts = Post.query.order_by(Post.date_posted).all()
+
+    return render_template('pitches.html', posts=all_posts,post_form = post_form)

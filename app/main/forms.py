@@ -20,9 +20,9 @@ class PostForm(FlaskForm):
     comment = StringField('What is in your mind?')
     submit = SubmitField('Submit')
     
-# class CategoryForm(FlaskForm):
-#     name = StringField('Category Name', validators=[Required(), Length(1, 64)])
-#     submit = SubmitField('Submit')
+class CategoryForm(FlaskForm):
+    name = StringField('Category Name', validators=[Required(), Length(1, 64)])
+    submit = SubmitField('Submit')
 
 
 class CommentForm(FlaskForm):

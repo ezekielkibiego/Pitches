@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<div class="row">
+    <h3>Comments</h3>
+    {% if comments %}
+        {{macro.displayComments(comments)}}
+    {%else%}
+        <h4>This pitch has no Comments</h4>
+        <a href="/post/comment/new/{{post.id}}"><button>Write a New Comment</button></a>
+
+    {% endif %}
+</div>
+
+{% endblock %}
