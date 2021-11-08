@@ -63,7 +63,9 @@ def new_post():
     post_form = PostForm()
     if post_form.validate_on_submit():
         title = post_form.post_title.data
-        new_post = Post(title=title, user=current_user)
+        category = post_form.post_category.data
+        content = post_form.post_content.data
+        new_post = Post(title=title, content=content, user=current_user, category=category)
         new_post.save_post()
         db.session.add(new_post)
         db.session.commit()

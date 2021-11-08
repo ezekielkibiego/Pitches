@@ -16,13 +16,13 @@ class UpdateProfileForm(FlaskForm):
 
 class PostForm(FlaskForm):
     post_title = StringField('Pitch title', validators=[Required()])
-    category = SelectField('Pitch category',choices=[('Select a category','Select a category'),('Pickup lines', 'Pickup lines'),('Interview','Interview'),('Product','Product'),('Promotions','Promotions')], validators=[Required()])
-    comment = StringField('What is in your mind?')
+    post_category = SelectField('Pitch category',choices=[('Select a category','Select a category'),('Pickup lines', 'Pickup lines'),('Interview','Interview'),('Product','Product'),('Promotions','Promotions')], validators=[Required()])
+    post_content = StringField('What is in your mind?')
     submit = SubmitField('Submit')
     
-class CategoryForm(FlaskForm):
-    name = StringField('Category Name', validators=[Required(), Length(1, 64)])
-    submit = SubmitField('Submit')
+# class CategoryForm(FlaskForm):
+#     name = StringField('Category Name', validators=[Required(), Length(1, 64)])
+#     submit = SubmitField('Submit')
 
 
 class CommentForm(FlaskForm):
