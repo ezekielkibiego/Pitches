@@ -8,16 +8,18 @@
 
 {% block content %}
 
-<div class="container-fluid text-center">
-        <h1> Welcome To Pitches Extravaganza</h1>
+<div class="container-fluid">
+        <h1 class="text-center"> Welcome To Pitches Extravaganza</h1>
         <div class="pitch">
             <div class="col-md-4">
                 {% for post in posts %}
     
-                <h5>{{ post.title }}</h5>
-                <h5>{{ post.category }}</h5>
-                <h5>{{ post.content }}</h5>
-            
+                <h5>Title : {{ post.title }}</h5>
+                <h5>Category : {{ post.category }}</h5>
+                <h5>Content : {{ post.content }}</h5>
+                <p>Posted on : {{post.date_posted.strftime('%Y-%m-%d')}}</p>
+                <p>Posted by : {{post.user.username}}</p> 
+                <a href="{{ url_for('main.post_details', id = post.id)}}"><button class="rounded-pill">Add a comment</button></a>
                 {% endfor %}
             </div>
         </div>

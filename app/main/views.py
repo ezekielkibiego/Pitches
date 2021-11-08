@@ -75,3 +75,24 @@ def new_post():
         all_posts = Post.query.order_by(Post.date_posted).all()
 
     return render_template('pitches.html', posts=all_posts,post_form = post_form)
+
+
+@main.route('/post/<id>', methods=['GET', 'POST'])
+@login_required
+def post_details(id):
+    comments = Comment.query.filter_by(post_id=id).all()
+    posts = Post.query.get(id)
+    if posts is None:
+        abort(404)
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(
+            comment=form.comment.data,
+            post_id=id,
+            user_id=current_user.id
+        )
+        db.session.add(comment)
+        db.session.commit()
+        form.comment.data = ''
+        flash('Your comment has been posted successfully!')
+    return render_template('comments.html',post= posts, comment=comments, comment_form = form)
