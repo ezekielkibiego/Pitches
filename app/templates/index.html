@@ -20,21 +20,16 @@
                 <p>Posted on : {{post.date_posted.strftime('%Y-%m-%d')}}</p>
                 <p>Posted by : {{post.user.username}}</p> 
                 <a href="{{ url_for('main.post_details', id = post.id)}}"><button class="rounded-pill">Add a comment</button></a>
+                
+
+                <div class="col-md-4 upvote">
+                    <span class="foot"> <a href="{{url_for('main.like',id = post.id)}}"><i class="fa fa-thumbs-up"></i> Upvotes: {{post.upvote.count()}}</a></span>
+                </div>
+                <div class="col-md-4 downvote">
+                    <span class="foot"> <a href="{{url_for('main.dislike',id = post.id)}}"> <i class="fa fa-thumbs-down"></i> Downvotes: {{post.downvote.count()}}</a></span>
+                </div>
                 {% endfor %}
             </div>
-        </div>
-        <!-- <div class="card">
-            <div class="card-body">
-                <div class="col-md-12">
-                    <h3 class="card-title">Pitch Category:Pick-up Lines</h3>
-                    <p class="card-text">I wanted to take you to the movies but they don't allow you to bring your own snacks.</p>
-                    <p class="card-text text-muted">Uploaded by Ezekiel Kibiego</p>
-                    
-                </div>
-            </div>
-            
-        </div> -->
-        
 
 </div>
 
