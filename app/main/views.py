@@ -116,7 +116,7 @@ def like(id):
     if like is not None:
         db.session.delete(like)
         db.session.commit()
-    
+        flash('You have successfully unupvoted the pitch!')
         return redirect(url_for('main.index'))
     new_like = Upvote(
         user_id=current_user.id,
@@ -124,7 +124,7 @@ def like(id):
     )
     db.session.add(new_like)
     db.session.commit()
-    
+    flash('You have successfully upvoted the pitch!')
     return redirect(url_for('main.index'))
 
 
@@ -141,7 +141,7 @@ def dislike(id):
        
         db.session.delete(dislike)
         db.session.commit()
-        flash('You have successfully undisliked the pitch!')
+        flash('You have successfully undownvoted the pitch!')
         return redirect(url_for('.index'))
 
     new_dislike = Downvote(
@@ -150,5 +150,5 @@ def dislike(id):
     )
     db.session.add(new_dislike)
     db.session.commit()
-    flash('You have successfully disliked the pitch!')
+    flash('You have successfully downvoted the pitch!')
     return redirect(url_for('.index'))
