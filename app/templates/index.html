@@ -29,12 +29,10 @@
 
 
                     <div class="col-md-4 upvote">
-                        <span class="foot"> <a href="{{url_for('main.like',id = post.id)}}"><i
-                                    class="fa fa-thumbs-up"></i><button class="btn-success">Upvotes:{{post.upvote.count()}}</button></a></span>
+                        <span class="foot"> <a href="{{url_for('main.like',id = post.id)}}"><button class="btn-success">Upvotes:{{post.upvote.count()}}</button></a></span>
                     </div>
                     <div class="col-md-4 downvote">
-                        <span class="foot"> <a href="{{url_for('main.dislike',id = post.id)}}"> <i
-                                    class="fa fa-thumbs-down"></i> <button class="btn-danger">Downvotes:{{post.downvote.count()}}</button></a></span>
+                        <span class="foot"> <a href="{{url_for('main.dislike',id = post.id)}}"> <button class="btn-danger">Downvotes:{{post.downvote.count()}}</button></a></span>
                     </div>
                 </div>
 

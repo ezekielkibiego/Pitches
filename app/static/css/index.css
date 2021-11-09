@@ -1,20 +1,26 @@
 body{
-    background-color: peachpuff;
-    color: olivedrab;
+    background-color: #fff;
+    color: #669966!important;
+    font-family: Verdana, Arial, sans-serif;
 }
 .navbar-inverse{
-    background-color: rgb(9, 231, 120);
+    
     border: none;
    
 }
 
+
 button{
-    color: olivedrab;
+    color: #fff;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px;
 }
 *{
     padding: 0;
     margin: 0;
+}
+
+h5{
+    color: #669966;
 }
