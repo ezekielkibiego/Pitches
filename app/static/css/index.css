@@ -1,3 +1,20 @@
 body{
     background-color: peachpuff;
+    color: olivedrab;
+}
+.navbar-inverse{
+    background-color: rgb(9, 231, 120);
+    border: none;
+   
+}
+
+button{
+    color: olivedrab;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+}
+*{
+    padding: 0;
+    margin: 0;
 }
