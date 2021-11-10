@@ -10,11 +10,17 @@
 This  is a Python Flask App where a user(s) can post a one minute pitches and also allows other users who have signed up to to sign in and comment, upvote or downvote a pitch.
 
 ## Live Link
-
+https://pitchesextravaganza.herokuapp.com/
 
 ## Screenshots
 
-<img src="">
+<img src="app/static/images/Screenshot.png">
+<img src="app/static/images/Screenshot (1).png">
+<img src="app/static/images/Screenshot (2).png">
+<img src="app/static/images/Screenshot (3).png">
+
+
+
 
 ## User Story
   A user can;
