@@ -41,7 +41,71 @@
         </div>
         {% endfor %}
 
-    </div>
-
+    </div><br>
+<div class="container-fluid" style="background-color: #d43f3a">
+    <footer class="text-center text-white">
+      <div class="container-fluid">
+        <section class="mt-5">
+          <div class="row text-center d-flex justify-content-center pt-5">
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="/" class="text-white">Home</a>
+              </h6>
+            </div>
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="/post" class="text-white">Add a Pitch</a>
+              </h6>
+            </div>
+            
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="{{url_for('main.profile',uname=current_user.username)}}" class="text-white">{{current_user.username}}</a>
+              </h6>
+            </div>
+           
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="{{url_for('auth.logout')}}" class="text-white">Logout</a>
+              </h6>
+            </div>
+            
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="{{url_for('auth.login')}}" class="text-white">Login</a>
+              </h6>
+            </div>
+            
+          </div>
+          
+        </section>
+        
+  
+        <hr class="my-3" />
+  
+        
+        <section class="mb-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-8">
+              <p>
+                
+              </p>
+            </div>
+          </div>
+        </section>
+        
+      </div><br>
+     
+      <div
+           class=""
+           style="background-color: #d43f3a"
+           >
+        © 2021 Copyright:
+        <a class="text-white" href="/">pitchesextravaganza.com</a>
+      </div> <br>
+      
+    </footer>
+    
+  </div> <br>
 
     {% endblock%}
